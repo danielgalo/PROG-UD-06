@@ -69,27 +69,11 @@ public class ObrasApp {
 				
 				System.out.print("Introduce una opción: ");
 				opcionObra = Integer.parseInt(sc.next());		
-				
-				String libroAEliminar;
-				String audioLibroAEliminar;
-				
-				if (opcionObra == 1) {
-					System.out.print("Introduzca el título del libro a eliminar: ");
-					libroAEliminar = sc.next();
-					for (int i = 0; i < listaLibros.size(); i++) {
-						if (listaLibros.get(i).getTitulo().equals(libroAEliminar)) {
-							listaLibros.remove(i);
-						}
-					}
 	
+				if (opcionObra == 1) {
+					eliminaLibro(sc, listaLibros);
 				} else  if (opcionObra == 2) {
-					System.out.print("Introduzca el título del Audio Libro a eliminar: ");
-					audioLibroAEliminar = sc.next();
-					for (int i = 0; i < listaAudioLibros.size(); i++) {
-						if (listaAudioLibros.get(i).getTitulo().equals(audioLibroAEliminar)) {
-							listaAudioLibros.remove(i);
-						}
-					}
+					eliminaAudioLibro(sc, listaAudioLibros);
 				}
 				
 			} else {
@@ -97,6 +81,28 @@ public class ObrasApp {
 			}
 		} while (opcion != 0);
 		
+	}
+
+	private static void eliminaLibro(Scanner sc, List<Libro> listaLibros) {
+		String libroAEliminar;
+		System.out.print("Introduzca el título del libro a eliminar: ");
+		libroAEliminar = sc.next();
+		for (int i = 0; i < listaLibros.size(); i++) {
+			if (listaLibros.get(i).getTitulo().equals(libroAEliminar)) {
+				listaLibros.remove(i);
+			}
+		}
+	}
+
+	private static void eliminaAudioLibro(Scanner sc, List<AudioLibro> listaAudioLibros) {
+		String audioLibroAEliminar;
+		System.out.print("Introduzca el título del Audio Libro a eliminar: ");
+		audioLibroAEliminar = sc.next();
+		for (int i = 0; i < listaAudioLibros.size(); i++) {
+			if (listaAudioLibros.get(i).getTitulo().equals(audioLibroAEliminar)) {
+				listaAudioLibros.remove(i);
+			}
+		}
 	}
 
 	private static void menuAddAudioLibro(Scanner sc, List<AudioLibro> listaAudioLibros) {
